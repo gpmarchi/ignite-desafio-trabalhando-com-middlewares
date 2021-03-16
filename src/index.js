@@ -24,7 +24,13 @@ function checksExistsUserAccount(request, response, next) {
 }
 
 function checksCreateTodosUserAvailability(request, response, next) {
-  // Complete aqui
+  const { user } = request;
+
+  if ((!user.pro && user.todos.length < 10) || user.pro) {
+    return next();
+  }
+
+  return response.status(400).json({ error: 'User not allowed to create todos.' });
 }
 
 function checksTodoExists(request, response, next) {
