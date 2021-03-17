@@ -30,7 +30,7 @@ function checksCreateTodosUserAvailability(request, response, next) {
     return next();
   }
 
-  return response.status(400).json({ error: 'User not allowed to create todos.' });
+  return response.status(403).json({ error: 'User not allowed to create todos.' });
 }
 
 function checksTodoExists(request, response, next) {
